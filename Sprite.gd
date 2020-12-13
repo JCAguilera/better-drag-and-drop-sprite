@@ -1,8 +1,5 @@
 extends Sprite
 
-#Can drag is set by the parent if the sprite has the higher z_index
-var can_drag = false
-
 var mouse_in = false
 var dragging = false
 var mouse_to_center_set = false
@@ -16,14 +13,9 @@ func _input(_event):
 		#for preventing the sprite to move its center to the mouse position
 		mouse_pos = get_viewport().get_mouse_position()
 		mouse_to_center = restaVectores(self.position, mouse_pos)
-		#We set the dragging to true
-		dragging = true
-
-	if Input.is_action_just_released("left_click"): #When we release
-		dragging = false
 
 func _process(_delta):
-	if (dragging && can_drag):
+	if (dragging):
 		mouse_pos = get_viewport().get_mouse_position()
 		#Set the position of the sprite to
 		#mouse position + static mouse_to_center vector
