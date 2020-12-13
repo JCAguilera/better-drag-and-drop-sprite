@@ -6,27 +6,23 @@ extends Node
 var sprites = []
 var top_sprite = null
 var dragging = false
-var top_set = false
 
 onready var status = $Status
 onready var spriteList = $SpriteList
 
 func _input(event):
 	if Input.is_action_just_pressed("left_click"): #When we click
-		if not top_set: #If there's no top we set one
-			top_sprite = _top_sprite() #Get the sprite on top (largest z_index)
-			if not top_sprite == null: #If there's a sprite
-				top_sprite.can_drag = true #We set can_drag to true
-			top_set = true
-		dragging = true #We are dragging now
+		top_sprite = _top_sprite() #Get the sprite on top (largest z_index)
+		if top_sprite: #If there's a sprite
+			top_sprite.can_drag = true #We set can_drag to true
+			dragging = true #We are dragging now
 
 	if Input.is_action_just_released("left_click"): #When we release
 		if top_sprite:
 			top_sprite.can_drag = false #Set can_drag to false
-		top_sprite = null #Top sprite to null
-		top_set = false
+			top_sprite = null #Top sprite to null
 		dragging = false
-	
+
 	_print_status()
 
 class SpritesSorter: #Custom sorter
