@@ -1,5 +1,6 @@
 extends Sprite
 
+#Can drag is set by the parent if the sprite has the higher z_index
 var can_drag = false
 
 var mouse_in = false
@@ -9,32 +10,24 @@ var mouse_to_center
 var sprite_pos
 var mouse_pos
 
-func _process(delta):
-	
-	if (mouse_in && Input.is_action_pressed("left_click")): #When clicking
+func _input(_event):
+	if (Input.is_action_just_pressed("left_click") && mouse_in): #When clicking
 		#First we set mouse_to_center as a static vector
 		#for preventing the sprite to move its center to the mouse position
-		if not mouse_to_center_set:
-			sprite_pos = self.position
-			mouse_pos = get_viewport().get_mouse_position()
-			mouse_to_center = restaVectores(sprite_pos, mouse_pos)
-			mouse_to_center_set = true
-		#We set the dragging to true if it's allowed to
-		dragging = can_drag
+		mouse_pos = get_viewport().get_mouse_position()
+		mouse_to_center = restaVectores(self.position, mouse_pos)
+		#We set the dragging to true
+		dragging = true
 
-	if (dragging && Input.is_action_pressed("left_click")): #While dragging
-		if can_drag:
-			mouse_pos = get_viewport().get_mouse_position()
-			
-			#Set the position of the sprite to
-			#mouse position + static mouse_to_center vector
-			var position = sumaVectores(mouse_pos, mouse_to_center)
-			
-			set_position(position)
-	else: #When we release
-		mouse_to_center_set = false #Set this to false so we can set mouse_to_center again
+	if Input.is_action_just_released("left_click"): #When we release
 		dragging = false
 
+func _process(_delta):
+	if (dragging && can_drag):
+		mouse_pos = get_viewport().get_mouse_position()
+		#Set the position of the sprite to
+		#mouse position + static mouse_to_center vector
+		set_position(sumaVectores(mouse_pos, mouse_to_center))
 
 func _on_Area2D_mouse_entered():
 	mouse_in = true
