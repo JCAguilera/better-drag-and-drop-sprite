@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://3u0w6c1y4cml"]
+[gd_scene load_steps=4 format=3 uid="uid://3o5yosnedjeg"]
 
 [ext_resource type="Texture2D" uid="uid://us48jqh702tx" path="res://icon.png" id="1"]
-[ext_resource type="Script" path="res://Sprite.gd" id="2"]
+[ext_resource type="Script" path="res://CSharp/DraggableSprite.cs" id="2_5cd0x"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(60, 60)
 
 [node name="Sprite2D" type="Sprite2D"]
 texture = ExtResource("1")
-script = ExtResource("2")
+script = ExtResource("2_5cd0x")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -16,5 +16,5 @@ script = ExtResource("2")
 position = Vector2(-4.76837e-07, -9.53674e-07)
 shape = SubResource("1")
 
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_OnArea2DMouseEntered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_OnArea2DMouseExited"]

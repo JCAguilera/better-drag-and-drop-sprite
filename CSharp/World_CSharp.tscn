@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5wtf4hkumir7"]
+
+[ext_resource type="Script" path="res://CSharp/DraggableSpriteManager.cs" id="1_pgajw"]
+[ext_resource type="PackedScene" uid="uid://3o5yosnedjeg" path="res://CSharp/DraggableSprite.tscn" id="2_2y2sm"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_pgajw")
+
+[node name="Sprite1" parent="." instance=ExtResource("2_2y2sm")]
+position = Vector2(434, 233)
+
+[node name="Sprite2" parent="." instance=ExtResource("2_2y2sm")]
+z_index = 1
+position = Vector2(203, 143)
+
+[node name="Sprite3" parent="." instance=ExtResource("2_2y2sm")]
+z_index = 2
+position = Vector2(611, 103)
+
+[node name="Status" type="RichTextLabel" parent="."]
+offset_left = 13.0
+offset_top = 531.0
+offset_right = 737.0
+offset_bottom = 547.0
+text = "dummy"
+
+[node name="SpriteList" type="RichTextLabel" parent="."]
+offset_left = 13.0
+offset_top = 555.0
+offset_right = 737.0
+offset_bottom = 575.0
+text = "dummy"
