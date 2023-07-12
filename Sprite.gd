@@ -1,4 +1,4 @@
-extends Sprite
+extends Sprite2D
 
 var mouse_in = false
 var dragging = false

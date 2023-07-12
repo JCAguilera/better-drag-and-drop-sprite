@@ -6,8 +6,8 @@ extends Node
 var sprites = []
 var top_sprite = null
 
-onready var status = $Status
-onready var spriteList = $SpriteList
+@onready var status = $Status
+@onready var spriteList = $SpriteList
 
 func _input(_event):
 	if Input.is_action_just_pressed("left_click"): #When we click
@@ -33,12 +33,12 @@ func _add_sprite(sprt): #Add sprite to list
 
 func _remove_sprite(sprt): #Remove sprite from list
 	var idx = sprites.find(sprt) #find the index
-	sprites.remove(idx) #remove
+	sprites.remove_at(idx) #remove
 
 func _top_sprite(): #Get the top sprite
 	if len(sprites) == 0: #If the list is empty
 		return null
-	sprites.sort_custom(SpritesSorter, "z_index") #Sort by z_index
+	sprites.sort_custom(Callable(SpritesSorter, "z_index")) #Sort by z_index
 	return sprites[0] #Return top sprite
 
 #Print status

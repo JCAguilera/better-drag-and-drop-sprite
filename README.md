@@ -24,6 +24,10 @@ Now, that method requires the use of Collision Shapes and Area2D nodes, and I di
 My brain was not working at a 100% when I made this example, so I think a lot of code can be improved. Please feel free to help me improve this example, so we can help more people.  
 Thanks [cezuriku](https://github.com/cezuriku) for simplyfing the code and updating it to Godot 3.2!
 
+## Godot 4 and C#
+
+This version is now working with Godot 4.1 and there are also a C# versions of the GDScripts in the folder "CSharp". To use this version in the example project, you need to set the Main Scene to `res://CSharp/World_CSharp.tscn` in Project Settings > General > Application > Run.
+
 ## License
 
 MIT License - see [LICENSE](LICENSE) for more details.
